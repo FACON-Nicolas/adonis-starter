@@ -2,11 +2,8 @@ import { DateTime } from 'luxon'
 import { withAuthFinder } from '@adonisjs/auth'
 import hash from '@adonisjs/core/services/hash'
 import { compose } from '@adonisjs/core/helpers'
-import { BaseModel, column, hasMany, manyToMany } from '@adonisjs/lucid/orm'
+import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DbAccessTokensProvider } from '@adonisjs/auth/access_tokens'
-import type { HasMany, ManyToMany } from '@adonisjs/lucid/types/relations'
-import ShoppingList from '#models/shopping_list'
-import ShoppingItem from '#models/shopping_item'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
@@ -25,15 +22,6 @@ export default class User extends compose(BaseModel, AuthFinder) {
 
   @column({ serializeAs: null })
   declare password: string
-
-  @hasMany(() => ShoppingList)
-  declare shoppingLists: HasMany<typeof ShoppingList>
-
-  @manyToMany(() => ShoppingList)
-  declare sharedShoppingLists: ManyToMany<typeof ShoppingList>
-
-  @hasMany(() => ShoppingItem)
-  declare shoppingItems: HasMany<typeof ShoppingItem>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
