@@ -1,0 +1,70 @@
+{
+  "name": "hello-world",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "node bin/server.ts",
+    "build": "node ace build",
+    "dev": "node ace serve --watch",
+    "test": "node ace test",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit"
+  },
+  "imports": {
+    "#controllers/*": "./app/controllers/*.ts",
+    "#exceptions/*": "./app/exceptions/*.ts",
+    "#models/*": "./app/models/*.ts",
+    "#mails/*": "./app/mails/*.ts",
+    "#services/*": "./app/services/*.ts",
+    "#listeners/*": "./app/listeners/*.ts",
+    "#events/*": "./app/events/*.ts",
+    "#middleware/*": "./app/middleware/*.ts",
+    "#validators/*": "./app/validators/*.ts",
+    "#providers/*": "./providers/*.ts",
+    "#policies/*": "./app/policies/*.ts",
+    "#abilities/*": "./app/abilities/*.ts",
+    "#database/*": "./database/*.ts",
+    "#start/*": "./start/*.ts",
+    "#tests/*": "./tests/*.ts",
+    "#config/*": "./config/*.ts"
+  },
+  "devDependencies": {
+    "@adonisjs/assembler": "^7.1.1",
+    "@adonisjs/eslint-config": "^1.2.1",
+    "@adonisjs/prettier-config": "^1.2.1",
+    "@adonisjs/tsconfig": "^1.2.1",
+    "@japa/api-client": "^2.0.2",
+    "@japa/assert": "^2.1.0",
+    "@japa/plugin-adonisjs": "^3.0.0",
+    "@japa/runner": "^3.1.1",
+    "@swc/core": "^1.3.107",
+    "@types/luxon": "^3.4.2",
+    "@types/node": "^20.11.10",
+    "eslint": "^8.56.0",
+    "pino-pretty": "^10.3.1",
+    "prettier": "^3.2.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@adonisjs/auth": "^9.1.1",
+    "@adonisjs/core": "^6.2.2",
+    "@adonisjs/cors": "^2.2.1",
+    "@adonisjs/lucid": "^20.1.0",
+    "@types/uuid": "^9.0.8",
+    "@vinejs/vine": "^1.7.1",
+    "luxon": "^3.4.4",
+    "pg": "^8.11.3",
+    "phc-argon2": "^1.1.4",
+    "reflect-metadata": "^0.2.1",
+    "uuid": "^9.0.1"
+  },
+  "eslintConfig": {
+    "extends": "@adonisjs/eslint-config/app"
+  },
+  "prettier": "@adonisjs/prettier-config"
+}
