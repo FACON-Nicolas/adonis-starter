@@ -1,5 +1,3 @@
-version: '3.1'
-
 services:
   adonis_app:
     container_name: adonis_app

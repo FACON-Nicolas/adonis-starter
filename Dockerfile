@@ -6,4 +6,5 @@ RUN npm install
 
 ADD . .
 EXPOSE 8080
+
 CMD ["npm", "run", "dev"]
