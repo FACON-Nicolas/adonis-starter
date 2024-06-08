@@ -1,4 +1,4 @@
-import vine from '@vinejs/vine'
+import vine, {SimpleMessagesProvider} from '@vinejs/vine'
 
 const loginValidator = vine.compile(
   vine.object({
@@ -15,5 +15,14 @@ const loginValidator = vine.compile(
     password: vine.string(),
   })
 )
+
+loginValidator.messagesProvider = new SimpleMessagesProvider({
+  'email.exists': 'Email address already in use.',
+  'email.email': 'Email address is not valid.',
+  'email.required': 'Email address is required.',
+  'email.string': 'Email address must be a string.',
+  'password.required': 'Password is required.',
+  'password.string': 'Password must be a string.'
+})
 
 export default loginValidator
