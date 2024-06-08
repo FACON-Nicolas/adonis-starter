@@ -27,7 +27,7 @@ export default class SessionController {
 
     return response.created({
       token: token.value!.release(),
-      user: { ...user },
+      user: { ...user.serialize() },
     })
   }
 
