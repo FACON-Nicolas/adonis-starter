@@ -17,7 +17,7 @@ const loginValidator = vine.compile(
 )
 
 loginValidator.messagesProvider = new SimpleMessagesProvider({
-  'email.exists': 'Email address already in use.',
+  'database.exists': 'Email address does not exist.',
   'email.email': 'Email address is not valid.',
   'email.required': 'Email address is required.',
   'email.string': 'Email address must be a string.',
