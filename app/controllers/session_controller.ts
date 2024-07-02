@@ -4,8 +4,10 @@ import loginValidator from '#validators/auth/login'
 import registerValidator from '#validators/auth/register'
 
 export default class SessionController {
-  async store({ request, response }: HttpContext) {
-    const { email, password } = await request.validateUsing(loginValidator)
+  async store({ request, response, i18n }: HttpContext) {
+    const { email, password } = await request.validateUsing(loginValidator, {
+      messagesProvider: i18n.createMessagesProvider()
+    })
 
     const user = await User.verifyCredentials(email, password)
     const token = await User.accessTokens.create(user)
@@ -16,8 +18,10 @@ export default class SessionController {
     })
   }
 
-  async register({ request, response }: HttpContext) {
-    const { email, password, username } = await request.validateUsing(registerValidator)
+  async register({ request, response, i18n }: HttpContext) {
+    const { email, password, username } = await request.validateUsing(registerValidator, {
+      messagesProvider: i18n.createMessagesProvider()
+    })
     const user = await User.create({
       email,
       password,

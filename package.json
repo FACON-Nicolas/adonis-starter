@@ -54,6 +54,7 @@
     "@adonisjs/auth": "9.2.1",
     "@adonisjs/core": "^6.11.0",
     "@adonisjs/cors": "^2.2.1",
+    "@adonisjs/i18n": "^2.1.0",
     "@adonisjs/lucid": "^20.1.0",
     "@types/uuid": "^9.0.8",
     "@vinejs/vine": "^2.0.0",
