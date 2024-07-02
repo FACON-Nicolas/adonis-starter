@@ -1,0 +1,20 @@
+{
+  "shared": {
+    "fields": {
+      "email": "Email",
+      "password": "Password",
+      "password_confirmation": "Password Confirmation",
+      "username": "Username"
+    },
+    "messages": {
+      "required": "{field} is required.",
+      "email": "The email must be a valid email address.",
+      "string": "{field} must be a string.",
+      "database.unique": "{field} is already taken.",
+      "minLength": "{field} must be at least {min} characters.",
+      "confirmed": "{field} does not match.",
+      "database.exists": "{field} does not exist."
+    }
+  }
+}
+

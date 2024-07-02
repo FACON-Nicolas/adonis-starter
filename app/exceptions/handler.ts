@@ -20,11 +20,11 @@ export default class HttpExceptionHandler extends ExceptionHandler {
     //})
     if (error instanceof authErrors.E_UNAUTHORIZED_ACCESS) {
       return ctx.response.status(401).json({
-        error: "Vous n'êtes pas autorisé à accéder à cette ressource",
+        error: ctx.i18n.t('auth.unauthorized'),
       })
     } else if (error instanceof authErrors.E_INVALID_CREDENTIALS) {
       return ctx.response.status(401).json({
-        error: "Les informations d'identification fournies sont incorrectes",
+        error: ctx.i18n.t('auth.invalid_credentials'),
       })
     }
     return ctx.response.status(error.status).json({

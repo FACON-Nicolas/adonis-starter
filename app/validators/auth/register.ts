@@ -1,4 +1,4 @@
-import vine, { SimpleMessagesProvider } from '@vinejs/vine'
+import vine from '@vinejs/vine'
 
 const registerValidator = vine.compile(
   vine.object({
@@ -19,18 +19,5 @@ const registerValidator = vine.compile(
       .transform((value) => value.charAt(0).toUpperCase() + value.slice(1)),
   })
 )
-
-registerValidator.messagesProvider = new SimpleMessagesProvider({
-  'email.email': 'Email address is not valid.',
-  'database.unique': 'Email address already in use.',
-  'email.required': 'Email address is required.',
-  'email.string': 'Email address must be a string.',
-  'password.required': 'Password is required.',
-  'password.string': 'Password must be a string.',
-  'password.minLength': 'Password must be at least 8 characters long.',
-  'passwordConfirmation.sameAs': 'Passwords do not match.',
-  'username.required': 'Username is required.',
-  'username.string': 'Username must be a string.',
-})
 
 export default registerValidator
