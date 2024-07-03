@@ -57,6 +57,7 @@ export default class DetectUserLocaleMiddleware {
      * edge templates.
      */
     if ('view' in ctx) {
+      // @ts-ignore
       ctx.view.share({ i18n: ctx.i18n })
     }
 
