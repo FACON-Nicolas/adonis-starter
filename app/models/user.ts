@@ -36,4 +36,8 @@ export default class User extends compose(BaseModel, AuthFinder) {
     type: 'auth_token',
     tokenSecretLength: 40,
   })
+
+  async getSocketRooms() {
+    return ['user:' + this.id]
+  }
 }
