@@ -1,4 +1,6 @@
 {
   "E_UNAUTHORIZED_ACCESS": "Vous n'êtes pas autorisé à accéder à cette ressource",
-  "E_INVALID_CREDENTIALS": "Les informations d'identification fournies sont incorrectes"
+  "E_INVALID_CREDENTIALS": "Les informations d'identification fournies sont incorrectes",
+  "E_MESSAGE_NOT_FOUND": "Le message n'a pas été trouvé",
+  "E_AUTHORIZATION_FAILURE": "Vous n'êtes pas autorisé à effectuer cette action"
 }
