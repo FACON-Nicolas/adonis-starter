@@ -3,7 +3,7 @@
     "fields": {
       "email": "Email",
       "password": "Mot de passe",
-      "password_confirmation": "Confirmation du mot de passe",
+      "passwordConfirmation": "Confirmation du mot de passe",
       "username": "Nom d'utilisateur"
     },
     "messages": {
@@ -13,7 +13,8 @@
       "unique": "{field} est déjà utilisé.",
       "minLength": "{field} doit contenir au moins {min} caractères.",
       "confirmed": "{field} ne correspond pas.",
-      "database.exists": "{field} n'existe pas."
+      "database.exists": "{field} n'existe pas.",
+      "sameAs": "{field} doit être identique à {otherField}."
     }
   }
 }

@@ -17,7 +17,7 @@ router.get('/', async () => {
   }
 })
 
-router.post('/login', [SessionController, 'store'])
+router.post('/login', [SessionController, 'login'])
 router.post('/register', [SessionController, 'register'])
 router
   .group(() => {

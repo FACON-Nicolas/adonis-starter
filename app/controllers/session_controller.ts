@@ -1,47 +1,31 @@
-import User from '#models/user'
 import { HttpContext } from '@adonisjs/core/http'
-import loginValidator from '#validators/auth/login'
-import registerValidator from '#validators/auth/register'
+import {inject} from "@adonisjs/core";
+import SessionService from "#services/session_service";
 
+@inject()
 export default class SessionController {
-  async store({ request, response, i18n }: HttpContext) {
-    const { email, password } = await request.validateUsing(loginValidator, {
-      messagesProvider: i18n.createMessagesProvider()
-    })
+  constructor(private readonly sessionService: SessionService) {}
 
-    const user = await User.verifyCredentials(email, password)
-    const token = await User.accessTokens.create(user)
+  async login({ request, response, i18n }: HttpContext) {
+    const { email, password } = await this.sessionService.validateLogin(request, i18n)
+    const user = await this.sessionService.loginUser(email, password)
+    const authPayload = await this.sessionService.getAuthResponsePayload(user)
 
-    return response.ok({
-      token: token.value!.release(),
-      user,
-    })
+    return response.ok(authPayload)
   }
 
   async register({ request, response, i18n }: HttpContext) {
-    const { email, password, username } = await request.validateUsing(registerValidator, {
-      messagesProvider: i18n.createMessagesProvider()
-    })
-    const user = await User.create({
-      email,
-      password,
-      username,
-    })
-    const token = await User.accessTokens.create(user, ['server:create', 'server:read'])
+    const { email, password, username } = await this.sessionService.validateRegister(request, i18n)
+    const user = await this.sessionService.createUser(email, password, username)
+    const authPayload = await this.sessionService.getAuthResponsePayload(user)
 
-    return response.created({
-      token: token.value!.release(),
-      user: { ...user.serialize() },
-    })
+    return response.created(authPayload)
   }
 
   async getProfile({ auth, response }: HttpContext) {
     const user = await auth.authenticate()
-    const token = await User.accessTokens.create(user)
+    const authPayload = await this.sessionService.getAuthResponsePayload(user)
 
-    return response.ok({
-      token: token.value!.release(),
-      user: user,
-    })
+    return response.ok(authPayload)
   }
 }
