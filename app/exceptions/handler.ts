@@ -13,7 +13,6 @@ export default class HttpExceptionHandler extends ExceptionHandler {
    * response to the client
    */
   async handle(error: any, ctx: HttpContext) {
-    console.log(error)
     if ('identifier' in error) {
       return ctx.response.status(error.status).json({
         error: ctx.i18n.t(error.identifier, {}, error.message),
